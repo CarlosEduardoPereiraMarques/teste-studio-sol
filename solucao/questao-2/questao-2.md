@@ -41,6 +41,64 @@ Levando em conta que todas as tabelas envolvidas contém milhões de linhas e qu
 
 ### Questão 2.1
 
+### Tabela `authors`
+
+1. **Índice em `name`:**
+   - *Positivos:* Facilita a busca de autores por nome.
+   - *Negativos:* Pode haver baixa cardinalidade se houver muitos autores com o mesmo nome.
+
+### Tabela `genres`
+
+1. **Índice em `name`:**
+   - *Positivos:* Facilita a busca de gêneros por nome.
+   - *Negativos:* Baixa cardinalidade se houver muitos gêneros com o mesmo nome.
+
+### Tabela `publishers`
+
+1. **Índice em `name`:**
+   - *Positivos:* Facilita a busca de editoras por nome.
+   - *Negativos:* Baixa cardinalidade se houver muitas editoras com o mesmo nome.
+
+### Tabela `books`
+
+1. **Índice em `name`:**
+   - *Positivos:* Facilita a busca de livros por nome.
+   - *Negativos:* Baixa cardinalidade se houver muitos livros com o mesmo nome.
+
+2. **Índice em `author_id`:**
+   - *Positivos:* Facilita a busca de livros por autor.
+   - *Negativos:* Pode haver livros com o mesmo autor, resultando em cardinalidade moderada.
+
+3. **Índice em `genre_id`:**
+   - *Positivos:* Facilita a busca de livros por gênero.
+   - *Negativos:* Baixa cardinalidade se houver muitos livros do mesmo gênero.
+
+4. **Índice em `publisher_id`:**
+   - *Positivos:* Facilita a busca de livros por editora.
+   - *Negativos:* Baixa cardinalidade se muitos livros são publicados pela mesma editora.
+
+5. **Índice em `released_at`:**
+   - *Positivos:* Facilita a busca de livros por data de lançamento.
+   - *Negativos:* Alta cardinalidade, mas pode ser útil para consultas específicas.
+
+### Tabela `books_ratings`
+
+1. **Índice em `user_id` e `book_id`:**
+   - *Positivos:* Facilita a busca de avaliações de um usuário específico em um livro específico.
+   - *Negativos:* Pode haver múltiplas avaliações do mesmo livro pelo mesmo usuário.
+
+### Tabela `books_comments`
+
+1. **Índice em `user_id` e `book_id`:**
+   - *Positivos:* Facilita a busca de comentários de um usuário específico em um livro específico.
+   - *Negativos:* Pode haver múltiplos comentários do mesmo livro pelo mesmo usuário.
+
+### Tabela `users`
+
+1. **Índice em `name` e `lastname`:**
+   - *Positivos:* Facilita a busca de usuários por nome e sobrenome.
+   - *Negativos:* Baixa cardinalidade se houver muitos usuários com o mesmo nome ou sobrenome.
+
 ### Questão 2.2
 Podem ser tomadas as seguintes medidas de otimização:
 
