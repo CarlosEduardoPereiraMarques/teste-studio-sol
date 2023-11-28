@@ -2,29 +2,28 @@ package main
 
 import (
 	"fmt"
-	"publisher-subscribe/pubsub"
 	"time"
+	"publisher-subscriber/pubsub"
 )
 
 func main() {
-	ps := pubsub.NewPubSub()
+	broker := pubsub.NewBroker()
 
-	queue := "example"
-	msg := "hello"
+	subscriber := broker.Subscribe("example_queue")
+	defer broker.CloseAll("example_queue")
 
-	ps.Publish(queue, msg)
+	go func() {
+		for {
+			select {
+			case msg := <-subscriber:
+				fmt.Printf("Received message: %+v\n", msg)
+			}
+		}
+	}()
 
-	ch := ps.Subscribe(queue)
-
-	select {
-	case receivedMsg := <-ch:
-		fmt.Printf("Received message: %s\n", receivedMsg)
-	case <-time.After(1 * time.Second):
-		fmt.Println("Timeout: No message received.")
-	}
-
-	err := ps.SaveToFile("output.json")
-	if err != nil {
-		fmt.Printf("Error saving to file: %v\n", err)
+	for i := 0; i < 5; i++ {
+		message := fmt.Sprintf("Message %d", i)
+		broker.Publish("example_queue", message)
+		time.Sleep(time.Second)
 	}
 }
