@@ -7,3 +7,5 @@ Implemente uma simples biblioteca de Publish/Subscribe em qualquer linguagem, ca
 - Pontos extras se a biblioteca utilizar generics para suportar os tipos de mensagens.
 
 ## Solução
+
+A solução para a questão se encontra na pasta ``publisher-subscriber``, bem como todas as instruções para executar o projeto.
