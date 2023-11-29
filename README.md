@@ -1,6 +1,6 @@
-# Desafio Técnico Studio-Sol
+# Desafio Técnico Studio Sol
 
-Bem-vindo ao repositório dedicado ao desafio técnico para a posição de Desenvolvedor Back-end na empresa Studio-Sol.
+Bem-vindo ao repositório dedicado ao desafio técnico para a posição de Desenvolvedor Back-end na empresa Studio Sol.
 
 ## Estrutura do Repositório
 
